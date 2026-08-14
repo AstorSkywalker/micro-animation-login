@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">Micro-animation login preview</title>
+  <desc id="desc">A navy background with a white institutional login card, two input fields, and a blue sign-in button.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#061226"/>
+      <stop offset="1" stop-color="#0a1d43"/>
+    </linearGradient>
+    <linearGradient id="button" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1684f5"/>
+      <stop offset="1" stop-color="#0067d6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="960" height="560" fill="url(#bg)"/>
+  <rect x="255" y="38" width="450" height="484" rx="26" fill="#fff" filter="url(#shadow)"/>
+  <rect x="425" y="76" width="110" height="42" rx="8" fill="#f5f7fb"/>
+  <text x="480" y="104" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#172033">CNE</text>
+  <text x="480" y="151" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0d1b3d">Consejo Nacional Electoral</text>
+  <line x1="305" y1="178" x2="410" y2="178" stroke="#d7deea"/>
+  <text x="480" y="182" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" letter-spacing="3" fill="#7180a2">PLATAFORMA INTERNA</text>
+  <line x1="550" y1="178" x2="655" y2="178" stroke="#d7deea"/>
+  <rect x="305" y="215" width="350" height="54" rx="13" fill="#f9fbfe" stroke="#d7deea"/>
+  <circle cx="329" cy="241" r="8" fill="none" stroke="#0879ee" stroke-width="2"/>
+  <text x="355" y="237" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#0879ee">NÃºmero de Identidad o Usuario</text>
+  <text x="355" y="256" font-family="Arial, sans-serif" font-size="15" fill="#0d1b3d">1234-1234-12341</text>
+  <rect x="305" y="289" width="350" height="54" rx="13" fill="#f9fbfe" stroke="#d7deea"/>
+  <rect x="322" y="310" width="14" height="12" rx="2" fill="none" stroke="#0879ee" stroke-width="2"/>
+  <text x="355" y="311" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#0879ee">ContraseÃ±a</text>
+  <text x="355" y="330" font-family="Arial, sans-serif" font-size="15" letter-spacing="4" fill="#0d1b3d">â€¢â€¢â€¢â€¢</text>
+  <text x="655" y="375" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#006fe6">Â¿Olvidaste tu contraseÃ±a?</text>
+  <rect x="305" y="400" width="350" height="54" rx="13" fill="url(#button)"/>
+  <text x="480" y="433" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#fff">â™™  Iniciar SesiÃ³n</text>
+</svg>
+
