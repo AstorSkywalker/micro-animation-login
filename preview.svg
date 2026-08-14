@@ -1,37 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
-  <title id="title">Micro-animation login preview</title>
-  <desc id="desc">A navy background with a white institutional login card, two input fields, and a blue sign-in button.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 780" role="img" aria-labelledby="title desc">
+  <title id="title">Micro-animation login page preview</title>
+  <desc id="desc">Preview of the CNE Honduras internal platform login screen.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#061226"/>
-      <stop offset="1" stop-color="#0a1d43"/>
-    </linearGradient>
-    <linearGradient id="button" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1684f5"/>
-      <stop offset="1" stop-color="#0067d6"/>
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".28"/>
-    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#061226"/><stop offset="1" stop-color="#0a1d43"/></linearGradient>
+    <linearGradient id="button" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1684f5"/><stop offset="1" stop-color="#0067d6"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity=".28"/></filter>
   </defs>
-  <rect width="960" height="560" fill="url(#bg)"/>
-  <rect x="255" y="38" width="450" height="484" rx="26" fill="#fff" filter="url(#shadow)"/>
-  <rect x="425" y="76" width="110" height="42" rx="8" fill="#f5f7fb"/>
-  <text x="480" y="104" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#172033">CNE</text>
-  <text x="480" y="151" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0d1b3d">Consejo Nacional Electoral</text>
-  <line x1="305" y1="178" x2="410" y2="178" stroke="#d7deea"/>
-  <text x="480" y="182" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" letter-spacing="3" fill="#7180a2">PLATAFORMA INTERNA</text>
-  <line x1="550" y1="178" x2="655" y2="178" stroke="#d7deea"/>
-  <rect x="305" y="215" width="350" height="54" rx="13" fill="#f9fbfe" stroke="#d7deea"/>
-  <circle cx="329" cy="241" r="8" fill="none" stroke="#0879ee" stroke-width="2"/>
-  <text x="355" y="237" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#0879ee">NÃºmero de Identidad o Usuario</text>
-  <text x="355" y="256" font-family="Arial, sans-serif" font-size="15" fill="#0d1b3d">1234-1234-12341</text>
-  <rect x="305" y="289" width="350" height="54" rx="13" fill="#f9fbfe" stroke="#d7deea"/>
-  <rect x="322" y="310" width="14" height="12" rx="2" fill="none" stroke="#0879ee" stroke-width="2"/>
-  <text x="355" y="311" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#0879ee">ContraseÃ±a</text>
-  <text x="355" y="330" font-family="Arial, sans-serif" font-size="15" letter-spacing="4" fill="#0d1b3d">â€¢â€¢â€¢â€¢</text>
-  <text x="655" y="375" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#006fe6">Â¿Olvidaste tu contraseÃ±a?</text>
-  <rect x="305" y="400" width="350" height="54" rx="13" fill="url(#button)"/>
-  <text x="480" y="433" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#fff">â™™  Iniciar SesiÃ³n</text>
+  <rect width="640" height="780" fill="url(#bg)"/>
+  <rect x="38" y="28" width="564" height="724" rx="28" fill="#fff" filter="url(#shadow)"/>
+  <image href="logo%20(1).webp" x="226" y="72" width="188" height="76" preserveAspectRatio="xMidYMid meet"/>
+  <text x="320" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#0d1b3d">Consejo Nacional Electoral</text>
+  <line x1="82" y1="228" x2="235" y2="228" stroke="#d7deea"/><text x="320" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" letter-spacing="3" fill="#7180a2">PLATAFORMA INTERNA</text><line x1="405" y1="228" x2="558" y2="228" stroke="#d7deea"/>
+  <rect x="82" y="278" width="476" height="68" rx="15" fill="#f9fbfe" stroke="#d7deea"/><circle cx="110" cy="312" r="9" fill="none" stroke="#0879ee" stroke-width="2"/><path d="M98 332c2-7 7-10 12-10s10 3 12 10" fill="none" stroke="#0879ee" stroke-width="2"/><text x="144" y="303" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0879ee">NÃºmero de Identidad o Usuario</text><text x="144" y="327" font-family="Arial, sans-serif" font-size="18" fill="#0d1b3d">1234-1234-12341</text>
+  <rect x="82" y="376" width="476" height="68" rx="15" fill="#f9fbfe" stroke="#d7deea"/><rect x="101" y="404" width="18" height="15" rx="3" fill="none" stroke="#0879ee" stroke-width="2"/><path d="M105 404v-5a5 5 0 0 1 10 0v5" fill="none" stroke="#0879ee" stroke-width="2"/><text x="144" y="401" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0879ee">ContraseÃ±a</text><text x="144" y="426" font-family="Arial, sans-serif" font-size="18" letter-spacing="5" fill="#0d1b3d">â€¢â€¢â€¢</text><path d="M526 410c8-12 20-12 28 0-8 12-20 12-28 0z" fill="none" stroke="#8190ad" stroke-width="2"/><circle cx="540" cy="410" r="3" fill="none" stroke="#8190ad" stroke-width="2"/>
+  <text x="558" y="486" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#006fe6">Â¿Olvidaste tu contraseÃ±a?</text><rect x="82" y="520" width="476" height="68" rx="15" fill="url(#button)"/><rect x="296" y="544" width="15" height="14" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M299 544v-5a5 5 0 0 1 10 0v5" fill="none" stroke="#fff" stroke-width="2"/><text x="328" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="600" fill="#fff">Iniciar SesiÃ³n</text>
+  <line x1="82" y1="638" x2="558" y2="638" stroke="#e7ebf1"/><text x="320" y="670" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#8995ab">â™¢  Acceso seguro a la plataforma institucional</text><text x="320" y="700" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#98a1b4">Â© 2026 Consejo Nacional Electoral de Honduras.</text><text x="320" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#98a1b4">Todos los derechos reservados.</text>
 </svg>
 
