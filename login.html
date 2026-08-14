@@ -197,6 +197,16 @@
             stroke-linejoin: round;
         }
 
+        .toggle-password svg.is-switching {
+            animation: eyeSwap 260ms cubic-bezier(.22,.75,.25,1);
+        }
+
+        @keyframes eyeSwap {
+            0% { opacity: 1; transform: scale(1) rotate(0deg); }
+            45% { opacity: 0.35; transform: scale(0.78) rotate(-10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
         .forgot-row {
             display: flex;
             justify-content: flex-end;
@@ -725,6 +735,13 @@
             const isVisible = passwordInput.type === 'text';
 
             passwordInput.type = isVisible ? 'password' : 'text';
+
+            eyeIcon.classList.remove('is-switching');
+            void eyeIcon.offsetWidth;
+            eyeIcon.classList.add('is-switching');
+            eyeIcon.addEventListener('animationend', () => {
+                eyeIcon.classList.remove('is-switching');
+            }, { once: true });
 
             btnToggle.setAttribute(
                 'aria-label',
