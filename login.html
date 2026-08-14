@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - CNE Honduras</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #07142f;
+            --card: #ffffff;
+            --text: #0d1b3d;
+            --muted: #7e8aa6;
+            --border: #d7deea;
+            --field-bg: #f9fbfe;
+            --primary: #006fe6;
+            --primary-hover: #005fc7;
+            --focus: rgba(0, 111, 230, 0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 28px;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(19, 71, 151, 0.25), transparent 28%),
+                radial-gradient(circle at 85% 18%, rgba(27, 90, 176, 0.18), transparent 24%),
+                linear-gradient(135deg, #061226 0%, #0a1d43 100%);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 520px;
+            background: var(--card);
+            border-radius: 22px;
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+            padding: 54px 50px 42px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .logo-box {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-box img {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto 28px;
+            object-fit: contain;
+        }
+
+        .logo-box h1 {
+            color: var(--text);
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.6px;
+            line-height: 1.2;
+        }
+
+        .brand-subtitle-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .brand-subtitle-row::before,
+        .brand-subtitle-row::after {
+            content: "";
+            height: 1px;
+            background: #e1e6ee;
+            flex: 1;
+        }
+
+        .brand-subtitle {
+            color: #7b88a5;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 26px;
+        }
+
+        .input-shell {
+            position: relative;
+        }
+
+        .field-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: var(--primary);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .field-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 58px;
+            padding: 19px 52px 8px 48px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            background: var(--field-bg);
+            color: var(--text);
+            font-size: 16px;
+            transition: 0.2s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px var(--focus);
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 48px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8190ad;
+            font-size: 14px;
+            pointer-events: none;
+            transition: 0.2s ease;
+            padding: 0 4px;
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            top: 10px;
+            transform: none;
+            font-size: 10.5px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            padding: 4px;
+            color: #8c96aa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-password:hover {
+            color: var(--text);
+        }
+
+        .toggle-password svg {
+            width: 21px;
+            height: 21px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .forgot-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -8px;
+            margin-bottom: 24px;
+        }
+
+        .forgot-link {
+            color: var(--primary);
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .submit-wrapper {
+            position: relative;
+        }
+
+        .btn-submit {
+            width: 100%;
+            height: 54px;
+            border: none;
+            border-radius: 13px;
+            background: linear-gradient(180deg, #0879ee 0%, #0067d6 100%);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            box-shadow: 0 10px 24px rgba(0, 111, 230, 0.20);
+            transition: 0.22s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(180deg, #0a83ff 0%, #005fc7 100%);
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0) scale(0.99);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+
+        .login-icon {
+            width: 19px;
+            height: 19px;
+            display: block;
+            flex: 0 0 19px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-content {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            line-height: 1;
+        }
+
+        .btn-submit.loading .btn-content {
+            display: none;
+        }
+
+        .btn-submit.loading .spinner {
+            display: block;
+        }
+
+        .security-note {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid #e7ebf1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            color: #8995ab;
+            font-size: 11.5px;
+            text-align: center;
+        }
+
+        .security-note svg {
+            width: 17px;
+            height: 17px;
+            flex-shrink: 0;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .footer-text {
+            margin-top: 10px;
+            color: #98a1b4;
+            font-size: 11.5px;
+            font-weight: 300;
+            line-height: 1.55;
+            text-align: center;
+        }
+
+        /* YouTube-like microinteraction centered on the lock icon. */
+        .btn-content {
+            position: relative;
+        }
+
+        .login-icon-wrap {
+            position: relative;
+            width: 19px;
+            height: 19px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 19px;
+        }
+
+        .login-icon {
+            position: relative;
+            z-index: 3;
+            transition: transform 180ms cubic-bezier(.2,.8,.2,1);
+        }
+
+        .btn-submit.reacting .login-icon {
+            animation: iconPop 900ms cubic-bezier(.22,.75,.25,1);
+        }
+
+        .login-icon .lock-shackle {
+            transform-box: fill-box;
+            transform-origin: left bottom;
+        }
+
+        .btn-submit.reacting .login-icon .lock-shackle {
+            animation: shackleOpen 900ms cubic-bezier(.22,.75,.25,1) forwards;
+        }
+
+        .icon-ray {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 2.5px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--ray-color);
+            pointer-events: none;
+            z-index: 4;
+            opacity: 0;
+            transform-origin: 50% 50%;
+            animation: iconRay 900ms cubic-bezier(.22,.75,.25,1) forwards;
+        }
+
+        @keyframes iconPop {
+            0%   { transform: scale(1); }
+            22%  { transform: scale(1.13); }
+            48%  { transform: scale(1.08); }
+            72%  { transform: scale(0.98); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shackleOpen {
+            0%, 20% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            52% {
+                transform: translate(1px, -2px) rotate(-16deg);
+            }
+            100% {
+                transform: translate(1px, -2px) rotate(-16deg);
+            }
+        }
+
+        @keyframes iconRay {
+            0% {
+                opacity: 0;
+                transform:
+                    translate(-50%, -50%)
+                    rotate(var(--angle))
+                    translateY(-8px)
+                    scaleY(0.35);
+            }
+            20% {
+                opacity: 1;
+            }
+            65% {
+                opacity: 0.95;
+            }
+            100% {
+                opacity: 0;
+                transform:
+                    translate(-50%, -50%)
+                    rotate(var(--angle))
+                    translateY(-20px)
+                    scaleY(1);
+            }
+        }
+
+        @media (max-width: 560px) {
+            body {
+                padding: 16px;
+            }
+
+            .login-container {
+                padding: 42px 24px 34px;
+                border-radius: 18px;
+            }
+
+            .logo-box {
+                margin-bottom: 32px;
+            }
+
+            .logo-box img {
+                width: 135px;
+                margin-bottom: 24px;
+            }
+
+            .logo-box h1 {
+                font-size: 23px;
+            }
+
+            .brand-subtitle {
+                font-size: 10px;
+                letter-spacing: 1.8px;
+            }
+
+            .form-group input {
+                font-size: 15px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .icon-ray {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="login-container">
+        <div class="logo-box">
+            <img src="logo (1).webp" alt="Logo CNE Honduras">
+
+            <h1>Consejo Nacional Electoral</h1>
+
+            <div class="brand-subtitle-row">
+                <span class="brand-subtitle">Plataforma Interna</span>
+            </div>
+        </div>
+
+        <form id="loginForm" novalidate>
+            <div class="form-group">
+                <div class="input-shell">
+                    <span class="field-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 21a8 8 0 0 0-16 0"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </span>
+
+                    <input
+                        type="text"
+                        id="usuario"
+                        name="usuario"
+                        placeholder=" "
+                        maxlength="15"
+                        inputmode="numeric"
+                        autocomplete="username"
+                        required
+                    >
+                    <label for="usuario">Número de Identidad o Usuario</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-shell">
+                    <span class="field-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+                        </svg>
+                    </span>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder=" "
+                        autocomplete="current-password"
+                        required
+                    >
+                    <label for="password">Contraseña</label>
+
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        id="btnToggle"
+                        aria-label="Mostrar contraseña"
+                    >
+                        <svg id="eyeIcon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"></path>
+                            <circle cx="12" cy="12" r="2.8"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="forgot-row">
+                <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <div class="submit-wrapper" id="submitWrapper">
+                <button type="submit" class="btn-submit" id="btnSubmit">
+                    <span class="btn-content">
+                        <span class="login-icon-wrap" id="loginIconWrap" aria-hidden="true">
+                            <svg class="login-icon" id="loginLockIcon" viewBox="0 0 24 24">
+                                <rect class="lock-body" x="5" y="10" width="14" height="10" rx="2"></rect>
+                                <path class="lock-shackle" d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+                            </svg>
+                        </span>
+                        Iniciar Sesión
+                    </span>
+                    <span class="spinner" aria-hidden="true"></span>
+                </button>
+            </div>
+        </form>
+
+        <div class="security-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3l7 3v5c0 4.8-2.9 8.2-7 10-4.1-1.8-7-5.2-7-10V6l7-3z"></path>
+                <path d="M9.5 12l1.7 1.7L15 10"></path>
+            </svg>
+            <span>Acceso seguro a la plataforma institucional</span>
+        </div>
+
+        <div class="footer-text">
+            &copy; 2026 Consejo Nacional Electoral de Honduras.<br>
+            Todos los derechos reservados.
+        </div>
+    </main>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const usuarioInput = document.getElementById('usuario');
+        const passwordInput = document.getElementById('password');
+        const btnToggle = document.getElementById('btnToggle');
+        const eyeIcon = document.getElementById('eyeIcon');
+        const btnSubmit = document.getElementById('btnSubmit');
+        const submitWrapper = document.getElementById('submitWrapper');
+        const loginIconWrap = document.getElementById('loginIconWrap');
+        const loginLockIcon = document.getElementById('loginLockIcon');
+
+        // Formato automático de identidad hondureña: 0801-1973-12345
+        usuarioInput.addEventListener('input', function () {
+            const raw = this.value;
+
+            // Si hay letras, se considera un nombre de usuario y no se reformatea.
+            if (!/^[0-9-]*$/.test(raw)) {
+                return;
+            }
+
+            let digits = raw.replace(/\D/g, '').substring(0, 13);
+
+            if (digits.length > 8) {
+                this.value =
+                    digits.substring(0, 4) + '-' +
+                    digits.substring(4, 8) + '-' +
+                    digits.substring(8);
+            } else if (digits.length > 4) {
+                this.value =
+                    digits.substring(0, 4) + '-' +
+                    digits.substring(4);
+            } else {
+                this.value = digits;
+            }
+        });
+
+        // Mostrar / ocultar contraseña.
+        btnToggle.addEventListener('click', function () {
+            const isVisible = passwordInput.type === 'text';
+
+            passwordInput.type = isVisible ? 'password' : 'text';
+
+            btnToggle.setAttribute(
+                'aria-label',
+                isVisible ? 'Mostrar contraseña' : 'Ocultar contraseña'
+            );
+
+            if (isVisible) {
+                eyeIcon.innerHTML = `
+                    <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"></path>
+                    <circle cx="12" cy="12" r="2.8"></circle>
+                `;
+            } else {
+                eyeIcon.innerHTML = `
+                    <path d="M3 3l18 18"></path>
+                    <path d="M10.6 6.2A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a16.5 16.5 0 0 1-3 3.6"></path>
+                    <path d="M6.2 6.2C3.4 8.1 2 12 2 12s3.5 6 10 6a10.4 10.4 0 0 0 4.2-.8"></path>
+                `;
+            }
+        });
+
+        /*
+         * Slow, lock-centered microinteraction with small colored rays.
+         * No ring: the lock itself is the focal point.
+         */
+        function createIconReaction() {
+            if (!loginIconWrap) return;
+
+            btnSubmit.classList.remove('reacting');
+            void btnSubmit.offsetWidth;
+            btnSubmit.classList.add('reacting');
+
+            const colors = [
+                '#FFD43B',
+                '#FF6B6B',
+                '#51CF66',
+                '#74C0FC',
+                '#B197FC',
+                '#FFA94D',
+                '#F06595',
+                '#63E6BE'
+            ];
+
+            const rayCount = 8;
+
+            for (let i = 0; i < rayCount; i++) {
+                const ray = document.createElement('span');
+                ray.className = 'icon-ray';
+
+                const angle = i * (360 / rayCount) + (Math.random() * 5 - 2.5);
+
+                ray.style.setProperty('--angle', `${angle}deg`);
+                ray.style.setProperty('--ray-color', colors[i % colors.length]);
+
+                loginIconWrap.appendChild(ray);
+                ray.addEventListener('animationend', () => ray.remove());
+            }
+
+            setTimeout(() => btnSubmit.classList.remove('reacting'), 950);
+        }
+
+        loginForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            if (!loginForm.checkValidity()) {
+                loginForm.reportValidity();
+                return;
+            }
+
+            if (btnSubmit.disabled) {
+                return;
+            }
+
+            createIconReaction();
+
+            // First show only the lock micro-animation.
+            // Do not show the loading spinner before/during the burst.
+            btnSubmit.disabled = true;
+
+            const visibleUser = usuarioInput.value;
+
+            const backendUser = /^[0-9-]+$/.test(visibleUser)
+                ? visibleUser.replace(/\D/g, '')
+                : visibleUser.trim();
+
+            console.log('Usuario para backend:', backendUser);
+
+            // Simulación de autenticación.
+            setTimeout(() => {
+                btnSubmit.classList.remove('reacting');
+                btnSubmit.disabled = false;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
