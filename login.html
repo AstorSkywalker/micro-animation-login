@@ -54,14 +54,14 @@
 
         .logo-box {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 36px;
         }
 
         .logo-box img {
             width: 150px;
             height: auto;
             display: block;
-            margin: 0 auto 28px;
+            margin: 0 auto 24px;
             object-fit: contain;
         }
 
@@ -77,7 +77,7 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-top: 14px;
+            margin-top: 12px;
         }
 
         .brand-subtitle-row::before,
@@ -99,7 +99,7 @@
 
         .form-group {
             position: relative;
-            margin-bottom: 26px;
+            margin-bottom: 24px;
         }
 
         .input-shell {
@@ -152,7 +152,7 @@
             left: 48px;
             top: 50%;
             transform: translateY(-50%);
-            color: #8190ad;
+            color: #657595;
             font-size: 14px;
             pointer-events: none;
             transition: 0.2s ease;
@@ -195,6 +195,12 @@
             stroke-width: 1.9;
             stroke-linecap: round;
             stroke-linejoin: round;
+            transition: opacity 120ms ease, transform 120ms ease;
+        }
+
+        .toggle-password svg.is-switching {
+            opacity: 0;
+            transform: scale(0.86);
         }
 
         .forgot-row {
@@ -212,6 +218,7 @@
         }
 
         .forgot-link:hover {
+            color: var(--primary-hover);
             text-decoration: underline;
         }
 
@@ -224,7 +231,7 @@
             height: 54px;
             border: none;
             border-radius: 13px;
-            background: linear-gradient(180deg, #0879ee 0%, #0067d6 100%);
+            background: linear-gradient(180deg, #1684f5 0%, #0067d6 100%);
             color: #fff;
             font-size: 16px;
             font-weight: 600;
@@ -233,7 +240,7 @@
             align-items: center;
             justify-content: center;
             gap: 9px;
-            box-shadow: 0 10px 24px rgba(0, 111, 230, 0.20);
+            box-shadow: 0 11px 26px rgba(0, 111, 230, 0.24);
             transition: 0.22s ease;
             position: relative;
             z-index: 2;
@@ -422,6 +429,87 @@
             }
         }
 
+
+        .form-group.has-error input {
+            border-color: #d92d20;
+            background: #fffafa;
+            box-shadow: 0 0 0 3px rgba(217, 45, 32, 0.08);
+        }
+
+        .form-group.has-error label {
+            color: #d92d20;
+        }
+
+        .field-error {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding-left: 2px;
+            color: #b42318;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.35;
+            animation: errorIn 180ms ease-out;
+        }
+
+        .form-group.has-error .field-error {
+            display: flex;
+        }
+
+        .field-error svg {
+            width: 14px;
+            height: 14px;
+            flex: 0 0 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .login-error {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 16px;
+            padding: 11px 13px;
+            border: 1px solid #f3c7c3;
+            border-radius: 10px;
+            background: #fff8f7;
+            color: #b42318;
+            font-size: 12.5px;
+            font-weight: 500;
+            line-height: 1.4;
+            animation: errorIn 180ms ease-out;
+        }
+
+        .login-error.show {
+            display: flex;
+        }
+
+        .login-error svg {
+            width: 16px;
+            height: 16px;
+            flex: 0 0 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @keyframes errorIn {
+            from {
+                opacity: 0;
+                transform: translateY(-3px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 560px) {
             body {
                 padding: 16px;
@@ -474,7 +562,7 @@
 <body>
     <main class="login-container">
         <div class="logo-box">
-            <img src="logo (1).webp" alt="Logo CNE Honduras">
+            <img src="logo.webp" alt="Logo CNE Honduras">
 
             <h1>Consejo Nacional Electoral</h1>
 
@@ -504,6 +592,14 @@
                         required
                     >
                     <label for="usuario">Número de Identidad o Usuario</label>
+                </div>
+                <div class="field-error" id="usuarioError" aria-live="polite">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 7v6"></path>
+                        <path d="M12 17h.01"></path>
+                    </svg>
+                    <span>Ingresa tu número de identidad o usuario.</span>
                 </div>
             </div>
 
@@ -538,10 +634,27 @@
                         </svg>
                     </button>
                 </div>
+                <div class="field-error" id="passwordError" aria-live="polite">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 7v6"></path>
+                        <path d="M12 17h.01"></path>
+                    </svg>
+                    <span>Ingresa tu contraseña.</span>
+                </div>
             </div>
 
             <div class="forgot-row">
                 <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <div class="login-error" id="loginError" aria-live="polite">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v6"></path>
+                    <path d="M12 17h.01"></path>
+                </svg>
+                <span>No fue posible iniciar sesión. Verifica tus credenciales.</span>
             </div>
 
             <div class="submit-wrapper" id="submitWrapper">
@@ -584,6 +697,10 @@
         const submitWrapper = document.getElementById('submitWrapper');
         const loginIconWrap = document.getElementById('loginIconWrap');
         const loginLockIcon = document.getElementById('loginLockIcon');
+        const usuarioError = document.getElementById('usuarioError');
+        const passwordError = document.getElementById('passwordError');
+        const loginError = document.getElementById('loginError');
+        let eyeSwapTimer;
 
         // Formato automático de identidad hondureña: 0801-1973-12345
         usuarioInput.addEventListener('input', function () {
@@ -616,23 +733,31 @@
 
             passwordInput.type = isVisible ? 'password' : 'text';
 
+            clearTimeout(eyeSwapTimer);
+            eyeIcon.classList.add('is-switching');
+
+            eyeSwapTimer = setTimeout(() => {
+                if (isVisible) {
+                    eyeIcon.innerHTML = `
+                        <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"></path>
+                        <circle cx="12" cy="12" r="2.8"></circle>
+                    `;
+                } else {
+                    eyeIcon.innerHTML = `
+                        <path d="M3 3l18 18"></path>
+                        <path d="M10.6 6.2A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a16.5 16.5 0 0 1-3 3.6"></path>
+                        <path d="M6.2 6.2C3.4 8.1 2 12 2 12s3.5 6 10 6a10.4 10.4 0 0 0 4.2-.8"></path>
+                    `;
+                }
+
+                requestAnimationFrame(() => eyeIcon.classList.remove('is-switching'));
+            }, 120);
+
             btnToggle.setAttribute(
                 'aria-label',
                 isVisible ? 'Mostrar contraseña' : 'Ocultar contraseña'
             );
 
-            if (isVisible) {
-                eyeIcon.innerHTML = `
-                    <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"></path>
-                    <circle cx="12" cy="12" r="2.8"></circle>
-                `;
-            } else {
-                eyeIcon.innerHTML = `
-                    <path d="M3 3l18 18"></path>
-                    <path d="M10.6 6.2A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a16.5 16.5 0 0 1-3 3.6"></path>
-                    <path d="M6.2 6.2C3.4 8.1 2 12 2 12s3.5 6 10 6a10.4 10.4 0 0 0 4.2-.8"></path>
-                `;
-            }
         });
 
         /*
@@ -647,14 +772,14 @@
             btnSubmit.classList.add('reacting');
 
             const colors = [
+                '#FFFFFF',
                 '#FFD43B',
-                '#FF6B6B',
-                '#51CF66',
+                '#FF8787',
                 '#74C0FC',
-                '#B197FC',
-                '#FFA94D',
-                '#F06595',
-                '#63E6BE'
+                '#DCEBFF',
+                '#FFFFFF',
+                '#FFB3B3',
+                '#FFF3BF'
             ];
 
             const rayCount = 8;
@@ -675,11 +800,74 @@
             setTimeout(() => btnSubmit.classList.remove('reacting'), 950);
         }
 
+
+        function setFieldError(input, message) {
+            const group = input.closest('.form-group');
+            const error = group.querySelector('.field-error');
+
+            group.classList.add('has-error');
+            input.setAttribute('aria-invalid', 'true');
+
+            if (error && message) {
+                error.querySelector('span').textContent = message;
+            }
+        }
+
+        function clearFieldError(input) {
+            const group = input.closest('.form-group');
+            group.classList.remove('has-error');
+            input.removeAttribute('aria-invalid');
+        }
+
+        function validateLoginForm() {
+            let valid = true;
+
+            clearFieldError(usuarioInput);
+            clearFieldError(passwordInput);
+            loginError.classList.remove('show');
+
+            const usuario = usuarioInput.value.trim();
+            const password = passwordInput.value;
+
+            if (!usuario) {
+                setFieldError(usuarioInput, 'Ingresa tu número de identidad o usuario.');
+                valid = false;
+            } else if (/^[0-9-]+$/.test(usuario) && usuario.replace(/\D/g, '').length !== 13) {
+                setFieldError(usuarioInput, 'El número de identidad debe contener 13 dígitos.');
+                valid = false;
+            }
+
+            if (!password) {
+                setFieldError(passwordInput, 'Ingresa tu contraseña.');
+                valid = false;
+            }
+
+            if (!valid) {
+                const firstInvalid = document.querySelector('.form-group.has-error input');
+                if (firstInvalid) firstInvalid.focus();
+            }
+
+            return valid;
+        }
+
+        usuarioInput.addEventListener('input', function () {
+            if (this.value.trim()) {
+                clearFieldError(this);
+            }
+            loginError.classList.remove('show');
+        });
+
+        passwordInput.addEventListener('input', function () {
+            if (this.value) {
+                clearFieldError(this);
+            }
+            loginError.classList.remove('show');
+        });
+
         loginForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            if (!loginForm.checkValidity()) {
-                loginForm.reportValidity();
+            if (!validateLoginForm()) {
                 return;
             }
 
