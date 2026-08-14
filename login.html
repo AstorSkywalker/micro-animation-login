@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - CNE Honduras</title>
+    <title>Iniciar SesiÃ³n - CNE Honduras</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -422,6 +422,87 @@
             }
         }
 
+
+        .form-group.has-error input {
+            border-color: #d92d20;
+            background: #fffafa;
+            box-shadow: 0 0 0 3px rgba(217, 45, 32, 0.08);
+        }
+
+        .form-group.has-error label {
+            color: #d92d20;
+        }
+
+        .field-error {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding-left: 2px;
+            color: #b42318;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.35;
+            animation: errorIn 180ms ease-out;
+        }
+
+        .form-group.has-error .field-error {
+            display: flex;
+        }
+
+        .field-error svg {
+            width: 14px;
+            height: 14px;
+            flex: 0 0 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .login-error {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 16px;
+            padding: 11px 13px;
+            border: 1px solid #f3c7c3;
+            border-radius: 10px;
+            background: #fff8f7;
+            color: #b42318;
+            font-size: 12.5px;
+            font-weight: 500;
+            line-height: 1.4;
+            animation: errorIn 180ms ease-out;
+        }
+
+        .login-error.show {
+            display: flex;
+        }
+
+        .login-error svg {
+            width: 16px;
+            height: 16px;
+            flex: 0 0 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @keyframes errorIn {
+            from {
+                opacity: 0;
+                transform: translateY(-3px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 560px) {
             body {
                 padding: 16px;
@@ -503,7 +584,15 @@
                         autocomplete="username"
                         required
                     >
-                    <label for="usuario">Número de Identidad o Usuario</label>
+                    <label for="usuario">NÃºmero de Identidad o Usuario</label>
+                </div>
+                <div class="field-error" id="usuarioError" aria-live="polite">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 7v6"></path>
+                        <path d="M12 17h.01"></path>
+                    </svg>
+                    <span>Ingresa tu nÃºmero de identidad o usuario.</span>
                 </div>
             </div>
 
@@ -524,13 +613,13 @@
                         autocomplete="current-password"
                         required
                     >
-                    <label for="password">Contraseña</label>
+                    <label for="password">ContraseÃ±a</label>
 
                     <button
                         type="button"
                         class="toggle-password"
                         id="btnToggle"
-                        aria-label="Mostrar contraseña"
+                        aria-label="Mostrar contraseÃ±a"
                     >
                         <svg id="eyeIcon" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"></path>
@@ -538,10 +627,27 @@
                         </svg>
                     </button>
                 </div>
+                <div class="field-error" id="passwordError" aria-live="polite">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 7v6"></path>
+                        <path d="M12 17h.01"></path>
+                    </svg>
+                    <span>Ingresa tu contraseÃ±a.</span>
+                </div>
             </div>
 
             <div class="forgot-row">
-                <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                <a href="#" class="forgot-link">Â¿Olvidaste tu contraseÃ±a?</a>
+            </div>
+
+            <div class="login-error" id="loginError" aria-live="polite">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v6"></path>
+                    <path d="M12 17h.01"></path>
+                </svg>
+                <span>No fue posible iniciar sesiÃ³n. Verifica tus credenciales.</span>
             </div>
 
             <div class="submit-wrapper" id="submitWrapper">
@@ -553,7 +659,7 @@
                                 <path class="lock-shackle" d="M8 10V7a4 4 0 0 1 8 0v3"></path>
                             </svg>
                         </span>
-                        Iniciar Sesión
+                        Iniciar SesiÃ³n
                     </span>
                     <span class="spinner" aria-hidden="true"></span>
                 </button>
@@ -584,8 +690,11 @@
         const submitWrapper = document.getElementById('submitWrapper');
         const loginIconWrap = document.getElementById('loginIconWrap');
         const loginLockIcon = document.getElementById('loginLockIcon');
+        const usuarioError = document.getElementById('usuarioError');
+        const passwordError = document.getElementById('passwordError');
+        const loginError = document.getElementById('loginError');
 
-        // Formato automático de identidad hondureña: 0801-1973-12345
+        // Formato automÃ¡tico de identidad hondureÃ±a: 0801-1973-12345
         usuarioInput.addEventListener('input', function () {
             const raw = this.value;
 
@@ -610,7 +719,7 @@
             }
         });
 
-        // Mostrar / ocultar contraseña.
+        // Mostrar / ocultar contraseÃ±a.
         btnToggle.addEventListener('click', function () {
             const isVisible = passwordInput.type === 'text';
 
@@ -618,7 +727,7 @@
 
             btnToggle.setAttribute(
                 'aria-label',
-                isVisible ? 'Mostrar contraseña' : 'Ocultar contraseña'
+                isVisible ? 'Mostrar contraseÃ±a' : 'Ocultar contraseÃ±a'
             );
 
             if (isVisible) {
@@ -675,11 +784,74 @@
             setTimeout(() => btnSubmit.classList.remove('reacting'), 950);
         }
 
+
+        function setFieldError(input, message) {
+            const group = input.closest('.form-group');
+            const error = group.querySelector('.field-error');
+
+            group.classList.add('has-error');
+            input.setAttribute('aria-invalid', 'true');
+
+            if (error && message) {
+                error.querySelector('span').textContent = message;
+            }
+        }
+
+        function clearFieldError(input) {
+            const group = input.closest('.form-group');
+            group.classList.remove('has-error');
+            input.removeAttribute('aria-invalid');
+        }
+
+        function validateLoginForm() {
+            let valid = true;
+
+            clearFieldError(usuarioInput);
+            clearFieldError(passwordInput);
+            loginError.classList.remove('show');
+
+            const usuario = usuarioInput.value.trim();
+            const password = passwordInput.value;
+
+            if (!usuario) {
+                setFieldError(usuarioInput, 'Ingresa tu nÃºmero de identidad o usuario.');
+                valid = false;
+            } else if (/^[0-9-]+$/.test(usuario) && usuario.replace(/\D/g, '').length !== 13) {
+                setFieldError(usuarioInput, 'El nÃºmero de identidad debe contener 13 dÃ­gitos.');
+                valid = false;
+            }
+
+            if (!password) {
+                setFieldError(passwordInput, 'Ingresa tu contraseÃ±a.');
+                valid = false;
+            }
+
+            if (!valid) {
+                const firstInvalid = document.querySelector('.form-group.has-error input');
+                if (firstInvalid) firstInvalid.focus();
+            }
+
+            return valid;
+        }
+
+        usuarioInput.addEventListener('input', function () {
+            if (this.value.trim()) {
+                clearFieldError(this);
+            }
+            loginError.classList.remove('show');
+        });
+
+        passwordInput.addEventListener('input', function () {
+            if (this.value) {
+                clearFieldError(this);
+            }
+            loginError.classList.remove('show');
+        });
+
         loginForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            if (!loginForm.checkValidity()) {
-                loginForm.reportValidity();
+            if (!validateLoginForm()) {
                 return;
             }
 
@@ -701,7 +873,7 @@
 
             console.log('Usuario para backend:', backendUser);
 
-            // Simulación de autenticación.
+            // SimulaciÃ³n de autenticaciÃ³n.
             setTimeout(() => {
                 btnSubmit.classList.remove('reacting');
                 btnSubmit.disabled = false;
@@ -710,3 +882,4 @@
     </script>
 </body>
 </html>
+
