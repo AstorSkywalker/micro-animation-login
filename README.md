@@ -10,6 +10,10 @@ Once GitHub Pages finishes its first deployment, view the page here:
 
 The first deployment may take a minute or two after the workflow is enabled.
 
+## Project preview
+
+![Micro-animation login preview](preview.svg)
+
 ## Project files
 
 - `login.html` — the complete login screen, including layout, styles, and interactions.
